@@ -12,19 +12,20 @@ foreach($k in Get-ChildItem){
                    $month = $($f.Month)
                    $year = $($f.Year)
 
-                   $destino = "2025\07"
+                   $destino = "2025\07"  #Poner aquí el nombre del directorio 
 
                    if (-not (Test-Path $destino)) {
                           New-Item -Path $destino -ItemType Directory
                    }
                    
-                   if ($month -eq 07 -and $year -eq 2025) {
+                   if ($month -eq 07 -and $year -eq 2025) {   #Filtrar aquí por fecha (mes y año)
                           $origen = $k.FullName
                           $rutaDestino = Join-Path $destino $nombreArchivo
 
                           # Mover el archivo
                           Move-Item -Path $origen -Destination $rutaDestino -Force
 
-                          Write-Host "Movido: $nombreArchivo a $destino"
+                          Write-Host "Movido: $nombreArchivo a $destino"  # Un simple print para confirmar lo que has movido
                    }
+
 }
